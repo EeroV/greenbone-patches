@@ -1,0 +1,13 @@
+--- /root/greenbone-feed-sync   2022-10-29 15:38:53.929787274 +0300
++++ /usr/sbin/greenbone-feed-sync       2022-10-29 16:22:14.701769834 +0300
+@@ -447,6 +447,10 @@
+     log_notice "Configured $FEED_TYPE_LONG rsync feed: $COMMUNITY_RSYNC_FEED"
+     mkdir -p "$FEED_DIR"
+     eval "$RSYNC -ltvrP $RSYNC_CHMOD $RSYNC_DELETE \"$COMMUNITY_RSYNC_FEED\" \"$FEED_DIR\""
++    if [[ "$FEED_DIR" == *"gvm"* ]]; then
++     # fix pdf on kali linux
++     sed -i 's/usepackage[utf8x]{inputenc}//g'  /var/lib/gvm/gvmd/report_formats/1f3202c2-c499-4260-922a-527106c05061/c402cc3e-b531-11e1-9163-406186ea4fc5/latex.xsl
++    fi
+     if [ $? -ne 0 ]; then
+       log_err "rsync failed. Your $FEED_TYPE_LONG might be broken now."
+       exit 1
