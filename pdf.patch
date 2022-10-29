@@ -1,0 +1,10 @@
+--- latex.xsl.eero      2022-10-29 12:52:54.531411829 +0300
++++ latex.xsl   2022-10-29 12:53:39.293781531 +0300
+@@ -209,7 +209,6 @@
+ \usepackage{chngpage}
+ \usepackage{calc}
+ \usepackage{url}
+-\usepackage[utf8x]{inputenc}
+
+ % Fontsetup
+ \usepackage[T1]{fontenc}
